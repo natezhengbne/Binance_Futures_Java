@@ -3,7 +3,7 @@ package com.binance.client.examples.websocket;
 import com.binance.client.SubscriptionClient;
 import com.binance.client.examples.constants.PrivateConfig;
 
-public class SubscribeAggregateTrade {
+public class SubscribeTrade {
 
     public static void main(String[] args) {
 
