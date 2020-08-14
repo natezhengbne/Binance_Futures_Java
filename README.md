@@ -15,12 +15,13 @@ The SDK supports both synchronous and asynchronous RESTful API invoking, and sub
 ### Installation
 
 *The SDK is compiled by Java8*
-''
+
+```xml
 <dependency>
   <groupId>com.github.natezhengbne</groupId>
   <artifactId>binance-client</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.3</version>
 </dependency>
-''
+```
 
 The example code is in binance-api-sdk/java/src/test/java/com/binance/client/examples.
