@@ -2,6 +2,7 @@ package com.binance.client;
 
 import com.binance.client.constant.BinanceApiConstants;
 import com.binance.client.exception.BinanceApiException;
+
 import java.net.URL;
 
 /**
@@ -14,7 +15,7 @@ public class RequestOptions {
     public RequestOptions() {
     }
 
-    public RequestOptions(RequestOptions option) {
+    public RequestOptions(com.binance.client.RequestOptions option) {
         this.url = option.url;
     }
 

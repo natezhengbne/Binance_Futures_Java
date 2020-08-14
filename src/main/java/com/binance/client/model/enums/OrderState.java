@@ -26,9 +26,9 @@ public enum OrderState {
     return code;
   }
 
-  private static final EnumLookup<OrderState> lookup = new EnumLookup<>(OrderState.class);
+  private static final EnumLookup<com.binance.client.model.enums.OrderState> lookup = new EnumLookup<>(com.binance.client.model.enums.OrderState.class);
 
-  public static OrderState lookup(String name) {
+  public static com.binance.client.model.enums.OrderState lookup(String name) {
     return lookup.lookup(name);
   }
 }

@@ -27,8 +27,8 @@ public enum  TransactType {
     return code;
   }
 
-  public static TransactType find(String code) {
-    for (TransactType transactType : TransactType.values()) {
+  public static com.binance.client.model.enums.TransactType find(String code) {
+    for (com.binance.client.model.enums.TransactType transactType : values()) {
       if (transactType.getCode().equals(code)) {
         return transactType;
       }

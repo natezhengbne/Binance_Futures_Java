@@ -2,17 +2,14 @@ package com.binance.client.impl.utils;
 
 import com.alibaba.fastjson.JSON;
 import com.binance.client.exception.BinanceApiException;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.LinkedHashMap;
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
+import java.util.*;
 
 public class UrlParamsBuilder {
 
@@ -57,14 +54,14 @@ public class UrlParamsBuilder {
     private final ParamsMap postBodyMap = new ParamsMap();
     private String method = "GET";
 
-    public static UrlParamsBuilder build() {
-        return new UrlParamsBuilder();
+    public static com.binance.client.impl.utils.UrlParamsBuilder build() {
+        return new com.binance.client.impl.utils.UrlParamsBuilder();
     }
 
     private UrlParamsBuilder() {
     }
 
-    public UrlParamsBuilder setMethod(String mode) {
+    public com.binance.client.impl.utils.UrlParamsBuilder setMethod(String mode) {
         method = mode;
         return this;
     }
@@ -73,71 +70,71 @@ public class UrlParamsBuilder {
         return mode.equals(method);
     }
 
-    public <T extends Enum> UrlParamsBuilder putToUrl(String name, T value) {
+    public <T extends Enum> com.binance.client.impl.utils.UrlParamsBuilder putToUrl(String name, T value) {
         if (value != null) {
             paramsMap.put(name, value.toString());
         }
         return this;
     }
 
-    public UrlParamsBuilder putToUrl(String name, String value) {
+    public com.binance.client.impl.utils.UrlParamsBuilder putToUrl(String name, String value) {
         paramsMap.put(name, value);
         return this;
     }
 
-    public UrlParamsBuilder putToUrl(String name, Date value, String format) {
+    public com.binance.client.impl.utils.UrlParamsBuilder putToUrl(String name, Date value, String format) {
         paramsMap.put(name, value, format);
         return this;
     }
 
-    public UrlParamsBuilder putToUrl(String name, Integer value) {
+    public com.binance.client.impl.utils.UrlParamsBuilder putToUrl(String name, Integer value) {
         paramsMap.put(name, value);
         return this;
     }
 
-    public UrlParamsBuilder putToUrl(String name, Long value) {
+    public com.binance.client.impl.utils.UrlParamsBuilder putToUrl(String name, Long value) {
         paramsMap.put(name, value);
         return this;
     }
 
-    public UrlParamsBuilder putToUrl(String name, BigDecimal value) {
+    public com.binance.client.impl.utils.UrlParamsBuilder putToUrl(String name, BigDecimal value) {
         paramsMap.put(name, value);
         return this;
     }
 
-    public UrlParamsBuilder putToPost(String name, String value) {
+    public com.binance.client.impl.utils.UrlParamsBuilder putToPost(String name, String value) {
         postBodyMap.put(name, value);
         return this;
     }
 
-    public <T extends Enum> UrlParamsBuilder putToPost(String name, T value) {
+    public <T extends Enum> com.binance.client.impl.utils.UrlParamsBuilder putToPost(String name, T value) {
         if (value != null) {
             postBodyMap.put(name, value.toString());
         }
         return this;
     }
 
-    public UrlParamsBuilder putToPost(String name, Date value, String format) {
+    public com.binance.client.impl.utils.UrlParamsBuilder putToPost(String name, Date value, String format) {
         postBodyMap.put(name, value, format);
         return this;
     }
 
-    public UrlParamsBuilder putToPost(String name, Integer value) {
+    public com.binance.client.impl.utils.UrlParamsBuilder putToPost(String name, Integer value) {
         postBodyMap.put(name, value);
         return this;
     }
 
-    public <T> UrlParamsBuilder putToPost(String name, List<String> list) {
+    public <T> com.binance.client.impl.utils.UrlParamsBuilder putToPost(String name, List<String> list) {
         postBodyMap.stringListMap.put(name, list);
         return this;
     }
 
-    public UrlParamsBuilder putToPost(String name, Long value) {
+    public com.binance.client.impl.utils.UrlParamsBuilder putToPost(String name, Long value) {
         postBodyMap.put(name, value);
         return this;
     }
 
-    public UrlParamsBuilder putToPost(String name, BigDecimal value) {
+    public com.binance.client.impl.utils.UrlParamsBuilder putToPost(String name, BigDecimal value) {
         postBodyMap.put(name, value);
         return this;
     }

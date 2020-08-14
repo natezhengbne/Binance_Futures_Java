@@ -20,9 +20,9 @@ public enum TradeDirection {
     return code;
   }
 
-  private static final EnumLookup<TradeDirection> lookup = new EnumLookup<>(TradeDirection.class);
+  private static final EnumLookup<com.binance.client.model.enums.TradeDirection> lookup = new EnumLookup<>(com.binance.client.model.enums.TradeDirection.class);
 
-  public static TradeDirection lookup(String name) {
+  public static com.binance.client.model.enums.TradeDirection lookup(String name) {
     return lookup.lookup(name);
   }
 }

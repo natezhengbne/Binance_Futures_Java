@@ -23,9 +23,9 @@ public enum BalanceType {
     return code;
   }
 
-  private static final EnumLookup<BalanceType> lookup = new EnumLookup<>(BalanceType.class);
+  private static final EnumLookup<com.binance.client.model.enums.BalanceType> lookup = new EnumLookup<>(com.binance.client.model.enums.BalanceType.class);
 
-  public static BalanceType lookup(String name) {
+  public static com.binance.client.model.enums.BalanceType lookup(String name) {
     return lookup.lookup(name);
   }
 

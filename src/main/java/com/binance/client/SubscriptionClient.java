@@ -1,11 +1,11 @@
 package com.binance.client;
 
-import java.util.List;
-
 import com.binance.client.impl.BinanceApiInternalFactory;
 import com.binance.client.model.enums.CandlestickInterval;
 import com.binance.client.model.event.*;
 import com.binance.client.model.user.UserDataUpdateEvent;
+
+import java.util.List;
 
 /***
  * The subscription client interface, it is used for subscribing any market data
@@ -19,7 +19,7 @@ public interface SubscriptionClient {
      *
      * @return The instance of synchronous client.
      */
-    static SubscriptionClient create() {
+    static com.binance.client.SubscriptionClient create() {
         return create("", "", new SubscriptionOptions());
     }
 
@@ -30,7 +30,7 @@ public interface SubscriptionClient {
      * @param secretKey The private key applied from Binance.
      * @return The instance of synchronous client.
      */
-    static SubscriptionClient create(String apiKey, String secretKey) {
+    static com.binance.client.SubscriptionClient create(String apiKey, String secretKey) {
         return BinanceApiInternalFactory.getInstance().createSubscriptionClient(apiKey, secretKey,
                 new SubscriptionOptions());
     }
@@ -44,7 +44,7 @@ public interface SubscriptionClient {
      *                            {@link SubscriptionOptions}
      * @return The instance of synchronous client.
      */
-    static SubscriptionClient create(String apiKey, String secretKey, SubscriptionOptions subscriptionOptions) {
+    static com.binance.client.SubscriptionClient create(String apiKey, String secretKey, SubscriptionOptions subscriptionOptions) {
         return BinanceApiInternalFactory.getInstance().createSubscriptionClient(apiKey, secretKey, subscriptionOptions);
     }
 
@@ -64,19 +64,12 @@ public interface SubscriptionClient {
      *                     or error happen between client and Binance server.
      */
     void subscribeAggregateTradeEvent(String symbol,
-            SubscriptionListener<AggregateTradeEvent> callback, SubscriptionErrorHandler errorHandler);
+                                      SubscriptionListener<AggregateTradeEvent> callback, SubscriptionErrorHandler errorHandler);
 
 
-    /**
-     * webscoket的订阅每笔交易
-     * @param symbol
-     * @param subscriptionListener
-     * @param errorHandler
-     */
     void subscribeTradeEvent(String symbol,
-                             SubscriptionListener<TradeEvent> subscriptionListener,
-                             SubscriptionErrorHandler errorHandler);
-
+                                    SubscriptionListener<TradeEvent> subscriptionListener,
+                                    SubscriptionErrorHandler errorHandler);
     /**
      * Subscribe mark price event. If the mark price is updated,
      * server will send the data to client and onReceive in callback will be called.
@@ -88,7 +81,7 @@ public interface SubscriptionClient {
      *                     or error happen between client and Binance server.
      */
     void subscribeMarkPriceEvent(String symbol,
-            SubscriptionListener<MarkPriceEvent> callback, SubscriptionErrorHandler errorHandler);
+                                 SubscriptionListener<MarkPriceEvent> callback, SubscriptionErrorHandler errorHandler);
 
     /**
      * Subscribe candlestick event. If the candlestick is updated,
@@ -102,7 +95,7 @@ public interface SubscriptionClient {
      *                     or error happen between client and Binance server.
      */
     void subscribeCandlestickEvent(String symbol, CandlestickInterval interval,
-            SubscriptionListener<CandlestickEvent> callback, SubscriptionErrorHandler errorHandler);
+                                   SubscriptionListener<CandlestickEvent> callback, SubscriptionErrorHandler errorHandler);
 
     /**
      * Subscribe individual symbol mini ticker event. If the symbol mini ticker is updated,
@@ -115,7 +108,7 @@ public interface SubscriptionClient {
      *                     or error happen between client and Binance server.
      */
     void subscribeSymbolMiniTickerEvent(String symbol,
-            SubscriptionListener<SymbolMiniTickerEvent> callback, SubscriptionErrorHandler errorHandler);
+                                        SubscriptionListener<SymbolMiniTickerEvent> callback, SubscriptionErrorHandler errorHandler);
 
     /**
      * Subscribe all market mini tickers event. If the mini tickers are updated,
@@ -139,7 +132,7 @@ public interface SubscriptionClient {
      *                     or error happen between client and Binance server.
      */
     void subscribeSymbolTickerEvent(String symbol,
-            SubscriptionListener<SymbolTickerEvent> callback, SubscriptionErrorHandler errorHandler);
+                                    SubscriptionListener<SymbolTickerEvent> callback, SubscriptionErrorHandler errorHandler);
 
     /**
      * Subscribe all market tickers event. If the tickers are updated,
@@ -163,7 +156,7 @@ public interface SubscriptionClient {
      *                     or error happen between client and Binance server.
      */
     void subscribeSymbolBookTickerEvent(String symbol,
-            SubscriptionListener<SymbolBookTickerEvent> callback, SubscriptionErrorHandler errorHandler);
+                                        SubscriptionListener<SymbolBookTickerEvent> callback, SubscriptionErrorHandler errorHandler);
 
     /**
      * Subscribe all market book tickers event. If the book tickers are updated,
@@ -187,7 +180,7 @@ public interface SubscriptionClient {
      *                     or error happen between client and Binance server.
      */
     void subscribeSymbolLiquidationOrderEvent(String symbol,
-            SubscriptionListener<LiquidationOrderEvent> callback, SubscriptionErrorHandler errorHandler);
+                                              SubscriptionListener<LiquidationOrderEvent> callback, SubscriptionErrorHandler errorHandler);
 
     /**
      * Subscribe all market book tickers event. If the book tickers are updated,
@@ -212,7 +205,7 @@ public interface SubscriptionClient {
      *                     or error happen between client and Binance server.
      */
     void subscribeBookDepthEvent(String symbol, Integer limit,
-            SubscriptionListener<OrderBookEvent> callback, SubscriptionErrorHandler errorHandler);
+                                 SubscriptionListener<OrderBookEvent> callback, SubscriptionErrorHandler errorHandler);
 
     /**
      * Subscribe diff depth event. If the book depth is updated,
@@ -225,7 +218,7 @@ public interface SubscriptionClient {
      *                     or error happen between client and Binance server.
      */
     void subscribeDiffDepthEvent(String symbol,
-            SubscriptionListener<OrderBookEvent> callback, SubscriptionErrorHandler errorHandler);
+                                 SubscriptionListener<OrderBookEvent> callback, SubscriptionErrorHandler errorHandler);
 
     /**
      * Subscribe user data event. If the user data is updated,
@@ -238,7 +231,7 @@ public interface SubscriptionClient {
      *                     or error happen between client and Binance server.
      */
     void subscribeUserDataEvent(String listenKey,
-            SubscriptionListener<UserDataUpdateEvent> callback, SubscriptionErrorHandler errorHandler);
+                                SubscriptionListener<UserDataUpdateEvent> callback, SubscriptionErrorHandler errorHandler);
 
 
 }

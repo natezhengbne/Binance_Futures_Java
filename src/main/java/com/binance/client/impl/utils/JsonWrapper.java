@@ -5,18 +5,15 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
 import com.binance.client.exception.BinanceApiException;
+
 import java.math.BigDecimal;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
+import java.util.*;
 
 public class JsonWrapper {
 
     private final JSONObject json;
 
-    public static JsonWrapper parseFromString(String text) {
+    public static com.binance.client.impl.utils.JsonWrapper parseFromString(String text) {
         try {
             JSONObject jsonObject;
             if(JSON.parse(text) instanceof JSONArray) {
@@ -25,7 +22,7 @@ public class JsonWrapper {
                 jsonObject = (JSONObject) JSON.parse(text);
             }
             if (jsonObject != null) {
-                return new JsonWrapper(jsonObject);
+                return new com.binance.client.impl.utils.JsonWrapper(jsonObject);
             } else {
                 throw new BinanceApiException(BinanceApiException.RUNTIME_ERROR,
                         "[Json] Unknown error when parse: " + text);
@@ -173,18 +170,18 @@ public class JsonWrapper {
         }
     }
 
-    public JsonWrapper getJsonObject(String name) {
+    public com.binance.client.impl.utils.JsonWrapper getJsonObject(String name) {
         checkMandatoryField(name);
-        return new JsonWrapper(json.getJSONObject(name));
+        return new com.binance.client.impl.utils.JsonWrapper(json.getJSONObject(name));
     }
 
     public JSONObject convert2JsonObject() {
         return this.json;
     }
 
-    public void getJsonObject(String name, Handler<JsonWrapper> todo) {
+    public void getJsonObject(String name, Handler<com.binance.client.impl.utils.JsonWrapper> todo) {
         checkMandatoryField(name);
-        todo.handle(new JsonWrapper(json.getJSONObject(name)));
+        todo.handle(new com.binance.client.impl.utils.JsonWrapper(json.getJSONObject(name)));
     }
 
     public JsonWrapperArray getJsonArray(String name) {

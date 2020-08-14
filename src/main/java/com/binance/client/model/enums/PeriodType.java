@@ -29,9 +29,9 @@ public enum PeriodType {
         return code;
     }
 
-    private static final EnumLookup<PeriodType> lookup = new EnumLookup<>(PeriodType.class);
+    private static final EnumLookup<com.binance.client.model.enums.PeriodType> lookup = new EnumLookup<>(com.binance.client.model.enums.PeriodType.class);
 
-    public static PeriodType lookup(String name) {
+    public static com.binance.client.model.enums.PeriodType lookup(String name) {
         return lookup.lookup(name);
     }
 }

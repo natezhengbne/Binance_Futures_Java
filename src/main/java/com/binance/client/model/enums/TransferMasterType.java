@@ -20,9 +20,9 @@ public enum TransferMasterType {
     return code;
   }
 
-  private static final EnumLookup<TransferMasterType> lookup = new EnumLookup<>(TransferMasterType.class);
+  private static final EnumLookup<com.binance.client.model.enums.TransferMasterType> lookup = new EnumLookup<>(com.binance.client.model.enums.TransferMasterType.class);
 
-  public static TransferMasterType lookup(String name) {
+  public static com.binance.client.model.enums.TransferMasterType lookup(String name) {
     return lookup.lookup(name);
   }
 }

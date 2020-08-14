@@ -23,9 +23,9 @@ public enum LoanOrderStates {
     return code;
   }
 
-  private static final EnumLookup<LoanOrderStates> lookup = new EnumLookup<>(LoanOrderStates.class);
+  private static final EnumLookup<com.binance.client.model.enums.LoanOrderStates> lookup = new EnumLookup<>(com.binance.client.model.enums.LoanOrderStates.class);
 
-  public static LoanOrderStates lookup(String name) {
+  public static com.binance.client.model.enums.LoanOrderStates lookup(String name) {
     return lookup.lookup(name);
   }
 }

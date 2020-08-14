@@ -33,9 +33,9 @@ public enum WithdrawState {
     return code;
   }
 
-  private static final EnumLookup<WithdrawState> lookup = new EnumLookup<>(WithdrawState.class);
+  private static final EnumLookup<com.binance.client.model.enums.WithdrawState> lookup = new EnumLookup<>(com.binance.client.model.enums.WithdrawState.class);
 
-  public static WithdrawState lookup(String name) {
+  public static com.binance.client.model.enums.WithdrawState lookup(String name) {
     return lookup.lookup(name);
   }
 

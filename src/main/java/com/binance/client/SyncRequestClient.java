@@ -3,8 +3,8 @@ package com.binance.client;
 import com.alibaba.fastjson.JSONObject;
 import com.binance.client.impl.BinanceApiInternalFactory;
 import com.binance.client.model.ResponseResult;
-import com.binance.client.model.market.*;
 import com.binance.client.model.enums.*;
+import com.binance.client.model.market.*;
 import com.binance.client.model.trade.*;
 
 import java.util.List;
@@ -25,7 +25,7 @@ public interface SyncRequestClient {
      *
      * @return The instance of synchronous client.
      */
-    static SyncRequestClient create() {
+    static com.binance.client.SyncRequestClient create() {
         return create("", "", new RequestOptions());
     }
 
@@ -37,7 +37,7 @@ public interface SyncRequestClient {
      * @param secretKey The private key applied from binance.
      * @return The instance of synchronous client.
      */
-    static SyncRequestClient create(String apiKey, String secretKey) {
+    static com.binance.client.SyncRequestClient create(String apiKey, String secretKey) {
         return BinanceApiInternalFactory.getInstance().createSyncRequestClient(apiKey, secretKey, new RequestOptions());
     }
 
@@ -50,7 +50,7 @@ public interface SyncRequestClient {
      * @param options   The request option.
      * @return The instance of synchronous client.
      */
-    static SyncRequestClient create(String apiKey, String secretKey, RequestOptions options) {
+    static com.binance.client.SyncRequestClient create(String apiKey, String secretKey, RequestOptions options) {
         return BinanceApiInternalFactory.getInstance().createSyncRequestClient(apiKey, secretKey, options);
     }
 
@@ -152,8 +152,8 @@ public interface SyncRequestClient {
      * @return Order.
      */
     Order postOrder(String symbol, OrderSide side, PositionSide positionSide, OrderType orderType,
-            TimeInForce timeInForce, String quantity, String price, String reduceOnly,
-            String newClientOrderId, String stopPrice, WorkingType workingType, NewOrderRespType newOrderRespType);
+                    TimeInForce timeInForce, String quantity, String price, String reduceOnly,
+                    String newClientOrderId, String stopPrice, WorkingType workingType, NewOrderRespType newOrderRespType);
 
     /**
      * Cancel an active order.

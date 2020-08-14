@@ -15,7 +15,7 @@ import java.util.Objects;
 public class WebSocketStreamClientImpl implements SubscriptionClient {
 
     private final SubscriptionOptions options;
-    private WebSocketWatchDog watchDog;
+    private com.binance.client.impl.WebSocketWatchDog watchDog;
 
     private final WebsocketRequestImpl requestImpl;
 
@@ -36,7 +36,7 @@ public class WebSocketStreamClientImpl implements SubscriptionClient {
 
     private <T> void createConnection(WebsocketRequest<T> request, boolean autoClose) {
         if (watchDog == null) {
-            watchDog = new WebSocketWatchDog(options);
+            watchDog = new com.binance.client.impl.WebSocketWatchDog(options);
         }
         WebSocketConnection connection = new WebSocketConnection(apiKey, secretKey, options, request, watchDog,
                 autoClose);
@@ -61,7 +61,7 @@ public class WebSocketStreamClientImpl implements SubscriptionClient {
 
     @Override
     public void subscribeAggregateTradeEvent(String symbol,
-            SubscriptionListener<AggregateTradeEvent> subscriptionListener, 
+            SubscriptionListener<AggregateTradeEvent> subscriptionListener,
             SubscriptionErrorHandler errorHandler) {
         createConnection(
                 requestImpl.subscribeAggregateTradeEvent(symbol, subscriptionListener, errorHandler));
@@ -69,15 +69,15 @@ public class WebSocketStreamClientImpl implements SubscriptionClient {
 
     @Override
     public void subscribeTradeEvent(String symbol,
-                                    SubscriptionListener<TradeEvent> subscriptionListener,
-                                    SubscriptionErrorHandler errorHandler) {
+                                             SubscriptionListener<TradeEvent> subscriptionListener,
+                                             SubscriptionErrorHandler errorHandler) {
         createConnection(
                 requestImpl.subscribeTradeEvent(symbol, subscriptionListener, errorHandler));
     }
 
     @Override
     public void subscribeMarkPriceEvent(String symbol,
-            SubscriptionListener<MarkPriceEvent> subscriptionListener, 
+            SubscriptionListener<MarkPriceEvent> subscriptionListener,
             SubscriptionErrorHandler errorHandler) {
         createConnection(
                 requestImpl.subscribeMarkPriceEvent(symbol, subscriptionListener, errorHandler));
@@ -85,7 +85,7 @@ public class WebSocketStreamClientImpl implements SubscriptionClient {
 
     @Override
     public void subscribeCandlestickEvent(String symbol, CandlestickInterval interval,
-            SubscriptionListener<CandlestickEvent> subscriptionListener, 
+            SubscriptionListener<CandlestickEvent> subscriptionListener,
             SubscriptionErrorHandler errorHandler) {
         createConnection(
                 requestImpl.subscribeCandlestickEvent(symbol, interval, subscriptionListener, errorHandler));
@@ -93,67 +93,67 @@ public class WebSocketStreamClientImpl implements SubscriptionClient {
 
     @Override
     public void subscribeSymbolMiniTickerEvent(String symbol,
-            SubscriptionListener<SymbolMiniTickerEvent> subscriptionListener, 
+            SubscriptionListener<SymbolMiniTickerEvent> subscriptionListener,
             SubscriptionErrorHandler errorHandler) {
         createConnection(
                 requestImpl.subscribeSymbolMiniTickerEvent(symbol, subscriptionListener, errorHandler));
     }
 
     @Override
-    public void subscribeAllMiniTickerEvent(SubscriptionListener<List<SymbolMiniTickerEvent>> subscriptionListener, 
-            SubscriptionErrorHandler errorHandler) {
+    public void subscribeAllMiniTickerEvent(SubscriptionListener<List<SymbolMiniTickerEvent>> subscriptionListener,
+                                            SubscriptionErrorHandler errorHandler) {
         createConnection(
                 requestImpl.subscribeAllMiniTickerEvent(subscriptionListener, errorHandler));
     }
 
     @Override
     public void subscribeSymbolTickerEvent(String symbol,
-            SubscriptionListener<SymbolTickerEvent> subscriptionListener, 
+            SubscriptionListener<SymbolTickerEvent> subscriptionListener,
             SubscriptionErrorHandler errorHandler) {
         createConnection(
                 requestImpl.subscribeSymbolTickerEvent(symbol, subscriptionListener, errorHandler));
     }
 
     @Override
-    public void subscribeAllTickerEvent(SubscriptionListener<List<SymbolTickerEvent>> subscriptionListener, 
-            SubscriptionErrorHandler errorHandler) {
+    public void subscribeAllTickerEvent(SubscriptionListener<List<SymbolTickerEvent>> subscriptionListener,
+                                        SubscriptionErrorHandler errorHandler) {
         createConnection(
                 requestImpl.subscribeAllTickerEvent(subscriptionListener, errorHandler));
     }
 
     @Override
     public void subscribeSymbolBookTickerEvent(String symbol,
-            SubscriptionListener<SymbolBookTickerEvent> subscriptionListener, 
+            SubscriptionListener<SymbolBookTickerEvent> subscriptionListener,
             SubscriptionErrorHandler errorHandler) {
         createConnection(
                 requestImpl.subscribeSymbolBookTickerEvent(symbol, subscriptionListener, errorHandler));
     }
 
     @Override
-    public void subscribeAllBookTickerEvent(SubscriptionListener<SymbolBookTickerEvent> subscriptionListener, 
-            SubscriptionErrorHandler errorHandler) {
+    public void subscribeAllBookTickerEvent(SubscriptionListener<SymbolBookTickerEvent> subscriptionListener,
+                                            SubscriptionErrorHandler errorHandler) {
         createConnection(
                 requestImpl.subscribeAllBookTickerEvent(subscriptionListener, errorHandler));
     }
 
     @Override
     public void subscribeSymbolLiquidationOrderEvent(String symbol,
-            SubscriptionListener<LiquidationOrderEvent> subscriptionListener, 
+            SubscriptionListener<LiquidationOrderEvent> subscriptionListener,
             SubscriptionErrorHandler errorHandler) {
         createConnection(
                 requestImpl.subscribeSymbolLiquidationOrderEvent(symbol, subscriptionListener, errorHandler));
     }
 
     @Override
-    public void subscribeAllLiquidationOrderEvent(SubscriptionListener<LiquidationOrderEvent> subscriptionListener, 
-            SubscriptionErrorHandler errorHandler) {
+    public void subscribeAllLiquidationOrderEvent(SubscriptionListener<LiquidationOrderEvent> subscriptionListener,
+                                                  SubscriptionErrorHandler errorHandler) {
         createConnection(
                 requestImpl.subscribeAllLiquidationOrderEvent(subscriptionListener, errorHandler));
     }
 
     @Override
     public void subscribeBookDepthEvent(String symbol, Integer limit,
-            SubscriptionListener<OrderBookEvent> subscriptionListener, 
+            SubscriptionListener<OrderBookEvent> subscriptionListener,
             SubscriptionErrorHandler errorHandler) {
         createConnection(
                 requestImpl.subscribeBookDepthEvent(symbol, limit, subscriptionListener, errorHandler));
@@ -161,7 +161,7 @@ public class WebSocketStreamClientImpl implements SubscriptionClient {
 
     @Override
     public void subscribeDiffDepthEvent(String symbol,
-            SubscriptionListener<OrderBookEvent> subscriptionListener, 
+            SubscriptionListener<OrderBookEvent> subscriptionListener,
             SubscriptionErrorHandler errorHandler) {
         createConnection(
                 requestImpl.subscribeDiffDepthEvent(symbol, subscriptionListener, errorHandler));
@@ -169,7 +169,7 @@ public class WebSocketStreamClientImpl implements SubscriptionClient {
 
     @Override
     public void subscribeUserDataEvent(String listenKey,
-            SubscriptionListener<UserDataUpdateEvent> subscriptionListener, 
+            SubscriptionListener<UserDataUpdateEvent> subscriptionListener,
             SubscriptionErrorHandler errorHandler) {
         createConnection(
                 requestImpl.subscribeUserDataEvent(listenKey, subscriptionListener, errorHandler));

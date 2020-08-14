@@ -1,16 +1,16 @@
 package com.binance.client.impl.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class EnumLookup<T extends Enum<T>> {
 
 
-  Logger logger = LoggerFactory.getLogger(EnumLookup.class);
+  Logger logger = LoggerFactory.getLogger(com.binance.client.impl.utils.EnumLookup.class);
 
   private final Map<String, T> map = new HashMap<>();
   private final String enumName;

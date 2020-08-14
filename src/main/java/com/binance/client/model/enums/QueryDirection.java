@@ -17,9 +17,9 @@ public enum QueryDirection {
     return code;
   }
 
-  private static final EnumLookup<QueryDirection> lookup = new EnumLookup<>(QueryDirection.class);
+  private static final EnumLookup<com.binance.client.model.enums.QueryDirection> lookup = new EnumLookup<>(com.binance.client.model.enums.QueryDirection.class);
 
-  public static QueryDirection lookup(String name) {
+  public static com.binance.client.model.enums.QueryDirection lookup(String name) {
     return lookup.lookup(name);
   }
 }

@@ -35,9 +35,9 @@ public enum OrderSource {
     return code;
   }
 
-  private static final EnumLookup<OrderSource> lookup = new EnumLookup<>(OrderSource.class);
+  private static final EnumLookup<com.binance.client.model.enums.OrderSource> lookup = new EnumLookup<>(com.binance.client.model.enums.OrderSource.class);
 
-  public static OrderSource lookup(String name) {
+  public static com.binance.client.model.enums.OrderSource lookup(String name) {
     return lookup.lookup(name);
   }
 }

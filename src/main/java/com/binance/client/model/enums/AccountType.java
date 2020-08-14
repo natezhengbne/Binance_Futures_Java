@@ -27,9 +27,9 @@ public enum AccountType {
     return code;
   }
 
-  private static final EnumLookup<AccountType> lookup = new EnumLookup<>(AccountType.class);
+  private static final EnumLookup<com.binance.client.model.enums.AccountType> lookup = new EnumLookup<>(com.binance.client.model.enums.AccountType.class);
 
-  public static AccountType lookup(String name) {
+  public static com.binance.client.model.enums.AccountType lookup(String name) {
     return lookup.lookup(name);
   }
 

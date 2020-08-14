@@ -1,10 +1,5 @@
 package com.binance.client.impl;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.binance.client.RequestOptions;
@@ -12,12 +7,16 @@ import com.binance.client.exception.BinanceApiException;
 import com.binance.client.impl.utils.JsonWrapperArray;
 import com.binance.client.impl.utils.UrlParamsBuilder;
 import com.binance.client.model.ResponseResult;
+import com.binance.client.model.enums.*;
 import com.binance.client.model.market.*;
 import com.binance.client.model.trade.*;
-import com.binance.client.model.enums.*;
-
 import okhttp3.Request;
 import org.apache.commons.lang3.StringUtils;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 class RestApiRequestImpl {
 
@@ -66,7 +65,7 @@ class RestApiRequestImpl {
                     "[Invoking] Builder is null when create request with Signature");
         }
         String requestUrl = url + address;
-        new ApiSignature().createSignature(apiKey, secretKey, builder);
+        new com.binance.client.impl.ApiSignature().createSignature(apiKey, secretKey, builder);
         if (builder.hasPostParam()) {
             requestUrl += builder.buildUrl();
             return new Request.Builder().url(requestUrl).post(builder.buildPostBody())
@@ -606,8 +605,8 @@ class RestApiRequestImpl {
     }
 
     RestApiRequest<Order> postOrder(String symbol, OrderSide side, PositionSide positionSide, OrderType orderType,
-            TimeInForce timeInForce, String quantity, String price, String reduceOnly,
-            String newClientOrderId, String stopPrice, WorkingType workingType, NewOrderRespType newOrderRespType) {
+                                    TimeInForce timeInForce, String quantity, String price, String reduceOnly,
+                                    String newClientOrderId, String stopPrice, WorkingType workingType, NewOrderRespType newOrderRespType) {
         RestApiRequest<Order> request = new RestApiRequest<>();
         UrlParamsBuilder builder = UrlParamsBuilder.build()
                 .putToUrl("symbol", symbol)
@@ -1072,8 +1071,8 @@ class RestApiRequestImpl {
         return request;
     }
 
-    RestApiRequest<List<MyTrade>> getAccountTrades(String symbol, Long startTime, Long endTime, 
-            Long fromId, Integer limit) {
+    RestApiRequest<List<MyTrade>> getAccountTrades(String symbol, Long startTime, Long endTime,
+                                                   Long fromId, Integer limit) {
         RestApiRequest<List<MyTrade>> request = new RestApiRequest<>();
         UrlParamsBuilder builder = UrlParamsBuilder.build()
                 .putToUrl("symbol", symbol)
@@ -1110,8 +1109,8 @@ class RestApiRequestImpl {
         return request;
     }
 
-    RestApiRequest<List<Income>> getIncomeHistory(String symbol, IncomeType incomeType, Long startTime, Long endTime, 
-            Integer limit) {
+    RestApiRequest<List<Income>> getIncomeHistory(String symbol, IncomeType incomeType, Long startTime, Long endTime,
+                                                  Integer limit) {
         RestApiRequest<List<Income>> request = new RestApiRequest<>();
         UrlParamsBuilder builder = UrlParamsBuilder.build()
                 .putToUrl("symbol", symbol)
@@ -1187,8 +1186,8 @@ class RestApiRequestImpl {
                 .putToUrl("startTime", startTime)
                 .putToUrl("endTime", endTime)
                 .putToUrl("limit", limit);
-        
-        
+
+
 //        request.request = createRequestByGetWithSignature("/gateway-api//v1/public/future/data/openInterestHist", builder);
         request.request = createRequestByGetWithSignature("/futures/data/openInterestHist", builder);
 

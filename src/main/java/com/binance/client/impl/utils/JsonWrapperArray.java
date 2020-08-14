@@ -4,9 +4,10 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.binance.client.exception.BinanceApiException;
+
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.LinkedList;
+import java.util.List;
 
 public class JsonWrapperArray {
 
@@ -34,14 +35,14 @@ public class JsonWrapperArray {
         this.array.add(val);
     }
 
-    public JsonWrapperArray getArrayAt(int index) {
+    public com.binance.client.impl.utils.JsonWrapperArray getArrayAt(int index) {
         if (array != null && array.size() > index) {
             JSONArray newArray = (JSONArray) array.get(index);
             if (newArray == null) {
                 throw new BinanceApiException(BinanceApiException.RUNTIME_ERROR,
                         "[Json] Cannot get array at index " + index + " in array");
             }
-            return new JsonWrapperArray(newArray);
+            return new com.binance.client.impl.utils.JsonWrapperArray(newArray);
         } else {
             throw new BinanceApiException(BinanceApiException.RUNTIME_ERROR,
                     "[Json] Index is out of bound or array is null");
@@ -106,13 +107,13 @@ public class JsonWrapperArray {
         });
     }
 
-    public void forEachAsArray(Handler<JsonWrapperArray> objectHandler) {
+    public void forEachAsArray(Handler<com.binance.client.impl.utils.JsonWrapperArray> objectHandler) {
         array.forEach((object) -> {
             if (!(object instanceof JSONArray)) {
                 throw new BinanceApiException(BinanceApiException.RUNTIME_ERROR,
                         "[Json] Parse array error in forEachAsArray");
             }
-            objectHandler.handle(new JsonWrapperArray((JSONArray) object));
+            objectHandler.handle(new com.binance.client.impl.utils.JsonWrapperArray((JSONArray) object));
         });
     }
 

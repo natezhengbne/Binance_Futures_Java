@@ -10,13 +10,13 @@ class InputChecker {
 
   private static final String regEx = "[ _`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]|\n|\t";
 
-  private static final InputChecker checkerInst;
+  private static final com.binance.client.impl.InputChecker checkerInst;
 
   static {
-    checkerInst = new InputChecker();
+    checkerInst = new com.binance.client.impl.InputChecker();
   }
 
-  static InputChecker checker() {
+  static com.binance.client.impl.InputChecker checker() {
     return checkerInst;
   }
 
@@ -27,7 +27,7 @@ class InputChecker {
     return m.find();
   }
 
-  <T> InputChecker shouldNotNull(T value, String name) {
+  <T> com.binance.client.impl.InputChecker shouldNotNull(T value, String name) {
     if (value == null) {
       throw new BinanceApiException(BinanceApiException.INPUT_ERROR,
           "[Input] " + name + " should not be null");
@@ -35,7 +35,7 @@ class InputChecker {
     return checkerInst;
   }
 
-  <T> InputChecker shouldNull(T value, String name) {
+  <T> com.binance.client.impl.InputChecker shouldNull(T value, String name) {
     if (value != null) {
       throw new BinanceApiException(BinanceApiException.INPUT_ERROR,
           "[Input] " + name + " should be null");
@@ -43,7 +43,7 @@ class InputChecker {
     return checkerInst;
   }
 
-  InputChecker checkSymbol(String symbol) {
+  com.binance.client.impl.InputChecker checkSymbol(String symbol) {
     if (symbol == null || "".equals(symbol)) {
       throw new BinanceApiException(BinanceApiException.INPUT_ERROR,
           "[Input] Symbol is mandatory");
@@ -55,7 +55,7 @@ class InputChecker {
     return checkerInst;
   }
 
-  InputChecker checkCurrency(String currency) {
+  com.binance.client.impl.InputChecker checkCurrency(String currency) {
     if (currency == null || "".equals(currency)) {
       throw new BinanceApiException(BinanceApiException.INPUT_ERROR,
           "[Input] Currency is mandatory");
@@ -67,7 +67,7 @@ class InputChecker {
     return checkerInst;
   }
 
-  InputChecker checkETF(String symbol) {
+  com.binance.client.impl.InputChecker checkETF(String symbol) {
     if (!"hb10".equals(symbol)) {
       throw new BinanceApiException(BinanceApiException.INPUT_ERROR,
           "currently only support hb10 :-)");
@@ -75,7 +75,7 @@ class InputChecker {
     return checkerInst;
   }
 
-  private InputChecker checkRange(int size, int min, int max, String name) {
+  private com.binance.client.impl.InputChecker checkRange(int size, int min, int max, String name) {
     if (!(min <= size && size <= max)) {
       throw new BinanceApiException(BinanceApiException.INPUT_ERROR,
           "[Input] " + name + " is out of bound. " + size + " is not in [" + min + "," + max + "]");
@@ -83,7 +83,7 @@ class InputChecker {
     return checkerInst;
   }
 
-  InputChecker checkSymbolList(List<String> symbols) {
+  com.binance.client.impl.InputChecker checkSymbolList(List<String> symbols) {
     if (symbols == null || symbols.size() == 0) {
       throw new BinanceApiException(BinanceApiException.INPUT_ERROR, "[Input] Symbol is mandatory");
     }
@@ -93,14 +93,14 @@ class InputChecker {
     return checkerInst;
   }
 
-  InputChecker checkRange(Integer size, int min, int max, String name) {
+  com.binance.client.impl.InputChecker checkRange(Integer size, int min, int max, String name) {
     if (size != null) {
       checkRange(size.intValue(), min, max, name);
     }
     return checkerInst;
   }
 
-  InputChecker greaterOrEqual(Integer value, int base, String name) {
+  com.binance.client.impl.InputChecker greaterOrEqual(Integer value, int base, String name) {
     if (value != null && value < base) {
       throw new BinanceApiException(BinanceApiException.INPUT_ERROR,
           "[Input] " + name + " should be greater than " + base);
@@ -108,7 +108,7 @@ class InputChecker {
     return checkerInst;
   }
 
-  <T> InputChecker checkList(List<T> list, int min, int max, String name) {
+  <T> com.binance.client.impl.InputChecker checkList(List<T> list, int min, int max, String name) {
     if (list != null) {
       if (list.size() > max) {
         throw new BinanceApiException(BinanceApiException.INPUT_ERROR,

@@ -26,9 +26,9 @@ public enum OrderType {
     return code;
   }
 
-  private static final EnumLookup<OrderType> lookup = new EnumLookup<>(OrderType.class);
+  private static final EnumLookup<com.binance.client.model.enums.OrderType> lookup = new EnumLookup<>(com.binance.client.model.enums.OrderType.class);
 
-  public static OrderType lookup(String name) {
+  public static com.binance.client.model.enums.OrderType lookup(String name) {
     return lookup.lookup(name);
   }
 

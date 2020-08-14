@@ -28,7 +28,7 @@ public abstract class Channels {
         json.put("method", "SUBSCRIBE");
         return json.toJSONString();
     }
-  
+
     public static String markPriceChannel(String symbol) {
         JSONObject json = new JSONObject();
         JSONArray params = new JSONArray();

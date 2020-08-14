@@ -17,9 +17,9 @@ public enum  EtfSwapType {
     return code;
   }
 
-  private static final EnumLookup<EtfSwapType> lookup = new EnumLookup<>(EtfSwapType.class);
+  private static final EnumLookup<com.binance.client.model.enums.EtfSwapType> lookup = new EnumLookup<>(com.binance.client.model.enums.EtfSwapType.class);
 
-  public static EtfSwapType lookup(String name) {
+  public static com.binance.client.model.enums.EtfSwapType lookup(String name) {
     return lookup.lookup(name);
   }
 }

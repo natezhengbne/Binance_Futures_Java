@@ -19,8 +19,8 @@ public enum  SymbolState {
     return state;
   }
 
-  public static SymbolState find(String state) {
-    for (SymbolState st : SymbolState.values()) {
+  public static com.binance.client.model.enums.SymbolState find(String state) {
+    for (com.binance.client.model.enums.SymbolState st : values()) {
       if (st.getState().equals(state)) {
         return st;
       }

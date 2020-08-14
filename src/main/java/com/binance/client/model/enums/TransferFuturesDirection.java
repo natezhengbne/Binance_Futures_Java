@@ -20,8 +20,8 @@ public enum  TransferFuturesDirection {
     return direction;
   }
 
-  public static TransferFuturesDirection find(String direction){
-    for (TransferFuturesDirection d : TransferFuturesDirection.values()) {
+  public static com.binance.client.model.enums.TransferFuturesDirection find(String direction){
+    for (com.binance.client.model.enums.TransferFuturesDirection d : values()) {
       if (d.getDirection().equals(direction)) {
         return d;
       }

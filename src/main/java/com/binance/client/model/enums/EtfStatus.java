@@ -20,9 +20,9 @@ public enum EtfStatus {
     return code;
   }
 
-  private static final EnumLookup<EtfStatus> lookup = new EnumLookup<>(EtfStatus.class);
+  private static final EnumLookup<com.binance.client.model.enums.EtfStatus> lookup = new EnumLookup<>(com.binance.client.model.enums.EtfStatus.class);
 
-  public static EtfStatus lookup(String name) {
+  public static com.binance.client.model.enums.EtfStatus lookup(String name) {
     return lookup.lookup(name);
   }
 }

@@ -23,8 +23,8 @@ public enum StopOrderOperator {
         return desc;
     }
 
-    public static StopOrderOperator find(String operator) {
-        for (StopOrderOperator op : StopOrderOperator.values()) {
+    public static com.binance.client.model.enums.StopOrderOperator find(String operator) {
+        for (com.binance.client.model.enums.StopOrderOperator op : values()) {
             if (op.getOperator().equals(operator)) {
                 return op;
             }

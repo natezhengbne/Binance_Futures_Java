@@ -1,6 +1,7 @@
 package com.binance.client;
 
 import com.binance.client.exception.BinanceApiException;
+
 import java.net.URI;
 
 /**
@@ -9,11 +10,12 @@ import java.net.URI;
 public class SubscriptionOptions {
 
     private String uri = "wss://api.binance.pro/";
+//    private String uri = "wss://stream.binance.com:9443/ws/";
     private boolean isAutoReconnect = true;
     private int receiveLimitMs = 60_000;
     private int connectionDelayOnFailure = 15;
 
-    public SubscriptionOptions(SubscriptionOptions options) {
+    public SubscriptionOptions(com.binance.client.SubscriptionOptions options) {
         this.uri = options.uri;
         this.isAutoReconnect = options.isAutoReconnect;
         this.receiveLimitMs = options.receiveLimitMs;
@@ -72,7 +74,7 @@ public class SubscriptionOptions {
      * @param isAutoReconnect The boolean flag, true for enable, false for disable
      * @return Return self for chaining
      */
-    public SubscriptionOptions setAutoReconnect(boolean isAutoReconnect) {
+    public com.binance.client.SubscriptionOptions setAutoReconnect(boolean isAutoReconnect) {
         this.isAutoReconnect = isAutoReconnect;
         return this;
     }

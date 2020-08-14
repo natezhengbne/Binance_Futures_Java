@@ -26,9 +26,9 @@ public enum DepositState {
     return code;
   }
 
-  private static final EnumLookup<DepositState> lookup = new EnumLookup<>(DepositState.class);
+  private static final EnumLookup<com.binance.client.model.enums.DepositState> lookup = new EnumLookup<>(com.binance.client.model.enums.DepositState.class);
 
-  public static DepositState lookup(String name) {
+  public static com.binance.client.model.enums.DepositState lookup(String name) {
     return lookup.lookup(name);
   }
 

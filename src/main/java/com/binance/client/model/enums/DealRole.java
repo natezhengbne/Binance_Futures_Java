@@ -20,8 +20,8 @@ public enum DealRole {
     return role;
   }
 
-  public static DealRole find(String role) {
-    for (DealRole fr : DealRole.values()) {
+  public static com.binance.client.model.enums.DealRole find(String role) {
+    for (com.binance.client.model.enums.DealRole fr : values()) {
       if (fr.getRole().equals(role)) {
         return fr;
       }

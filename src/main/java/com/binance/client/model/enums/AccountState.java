@@ -20,9 +20,9 @@ public enum AccountState {
     return code;
   }
 
-  private static final EnumLookup<AccountState> lookup = new EnumLookup<>(AccountState.class);
+  private static final EnumLookup<com.binance.client.model.enums.AccountState> lookup = new EnumLookup<>(com.binance.client.model.enums.AccountState.class);
 
-  public static AccountState lookup(String name) {
+  public static com.binance.client.model.enums.AccountState lookup(String name) {
     return lookup.lookup(name);
   }
 }

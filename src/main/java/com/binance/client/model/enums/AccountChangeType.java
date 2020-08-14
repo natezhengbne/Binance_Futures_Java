@@ -45,10 +45,10 @@ public enum AccountChangeType {
     return code;
   }
 
-  private static final EnumLookup<AccountChangeType> lookup = new EnumLookup<>(
-      AccountChangeType.class);
+  private static final EnumLookup<com.binance.client.model.enums.AccountChangeType> lookup = new EnumLookup<>(
+      com.binance.client.model.enums.AccountChangeType.class);
 
-  public static AccountChangeType lookup(String name) {
+  public static com.binance.client.model.enums.AccountChangeType lookup(String name) {
     return lookup.lookup(name);
   }
 
