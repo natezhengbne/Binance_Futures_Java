@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.binance.sdk</groupId>
-    <artifactId>binance-client</artifactId>
+    <artifactId>com.github.natezhengbne</artifactId>
     <version>1.0.8-SNAPSHOT</version>
 
     <properties>
