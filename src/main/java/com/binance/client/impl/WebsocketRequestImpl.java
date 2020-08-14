@@ -3,6 +3,8 @@ package com.binance.client.impl;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.binance.client.impl.utils.JsonWrapper;
 import com.binance.client.impl.utils.JsonWrapperArray;
 
@@ -10,14 +12,7 @@ import com.binance.client.SubscriptionErrorHandler;
 import com.binance.client.SubscriptionListener;
 import com.binance.client.impl.utils.Channels;
 import com.binance.client.model.enums.CandlestickInterval;
-import com.binance.client.model.event.AggregateTradeEvent;
-import com.binance.client.model.event.CandlestickEvent;
-import com.binance.client.model.event.LiquidationOrderEvent;
-import com.binance.client.model.event.MarkPriceEvent;
-import com.binance.client.model.event.OrderBookEvent;
-import com.binance.client.model.event.SymbolBookTickerEvent;
-import com.binance.client.model.event.SymbolMiniTickerEvent;
-import com.binance.client.model.event.SymbolTickerEvent;
+import com.binance.client.model.event.*;
 import com.binance.client.model.market.OrderBookEntry;
 import com.binance.client.model.user.AccountUpdate;
 import com.binance.client.model.user.BalanceUpdate;
@@ -52,6 +47,34 @@ class WebsocketRequestImpl {
             result.setLastId(jsonWrapper.getLong("l"));
             result.setTime(jsonWrapper.getLong("T"));
             result.setIsBuyerMaker(jsonWrapper.getBoolean("m"));
+            return result;
+        };
+        return request;
+    }
+
+
+    WebsocketRequest<TradeEvent> subscribeTradeEvent(String symbol,
+                                                     SubscriptionListener<TradeEvent> subscriptionListener,
+                                                     SubscriptionErrorHandler errorHandler) {
+        InputChecker.checker()
+                .shouldNotNull(symbol, "symbol")
+                .shouldNotNull(subscriptionListener, "listener");
+        WebsocketRequest<TradeEvent> request = new WebsocketRequest<>(subscriptionListener, errorHandler);
+        request.name = "***Trade for " + symbol + "***";
+        request.connectionHandler = (connection) -> connection.send(Channels.tradeChannel(symbol));
+        request.jsonParser = (jsonWrapper) -> {
+            System.out.println(JSON.parseObject(JSONObject.toJSONString(jsonWrapper)).toJSONString());
+            TradeEvent result = new TradeEvent();
+            result.setEventType(jsonWrapper.getString("e"));
+            result.setEventTime(jsonWrapper.getLong("E"));
+            result.setSymbol(jsonWrapper.getString("s"));
+            result.setId(jsonWrapper.getLong("t"));
+            result.setPrice(jsonWrapper.getBigDecimal("p"));
+            result.setQty(jsonWrapper.getBigDecimal("q"));
+            result.setBuyOrderId(jsonWrapper.getLong("b"));
+            result.setSellOrderId(jsonWrapper.getLong("a"));
+            result.setExchangeTIme(jsonWrapper.getLong("T"));
+            result.setMarket(jsonWrapper.getBoolean("m"));
             return result;
         };
         return request;

@@ -4,14 +4,7 @@ import java.util.List;
 
 import com.binance.client.impl.BinanceApiInternalFactory;
 import com.binance.client.model.enums.CandlestickInterval;
-import com.binance.client.model.event.AggregateTradeEvent;
-import com.binance.client.model.event.CandlestickEvent;
-import com.binance.client.model.event.LiquidationOrderEvent;
-import com.binance.client.model.event.MarkPriceEvent;
-import com.binance.client.model.event.OrderBookEvent;
-import com.binance.client.model.event.SymbolBookTickerEvent;
-import com.binance.client.model.event.SymbolMiniTickerEvent;
-import com.binance.client.model.event.SymbolTickerEvent;
+import com.binance.client.model.event.*;
 import com.binance.client.model.user.UserDataUpdateEvent;
 
 /***
@@ -72,6 +65,17 @@ public interface SubscriptionClient {
      */
     void subscribeAggregateTradeEvent(String symbol,
             SubscriptionListener<AggregateTradeEvent> callback, SubscriptionErrorHandler errorHandler);
+
+
+    /**
+     * webscoket的订阅每笔交易
+     * @param symbol
+     * @param subscriptionListener
+     * @param errorHandler
+     */
+    void subscribeTradeEvent(String symbol,
+                             SubscriptionListener<TradeEvent> subscriptionListener,
+                             SubscriptionErrorHandler errorHandler);
 
     /**
      * Subscribe mark price event. If the mark price is updated,
