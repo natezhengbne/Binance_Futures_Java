@@ -4,7 +4,7 @@
 
     <groupId>com.github.natezhengbne</groupId>
     <artifactId>binance-client</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <name>Binance_Futures_Java</name>
     <description>This is Binance Java SDK, This is a lightweight Java library, you can import to your Java project and use this SDK to query all market data, trading and manage your account.</description>
     <url>https://github.com/natezhengbne/Binance_Futures_Java</url>
