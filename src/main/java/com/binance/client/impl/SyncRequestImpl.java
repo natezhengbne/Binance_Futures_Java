@@ -19,6 +19,11 @@ public class SyncRequestImpl implements SyncRequestClient {
 
 
     @Override
+    public String transfer(String asset, String amount, Integer type) {
+        return com.binance.client.impl.RestApiInvoker.callSync(requestImpl.transfer(asset,amount,type));
+    }
+
+    @Override
     public ExchangeInformation getExchangeInformation() {
         return com.binance.client.impl.RestApiInvoker.callSync(requestImpl.getExchangeInformation());
     }
@@ -93,6 +98,8 @@ public class SyncRequestImpl implements SyncRequestClient {
                 timeInForce, quantity, price, reduceOnly,
                 newClientOrderId, stopPrice, workingType,newOrderRespType));
     }
+
+
 
     @Override
     public Order cancelOrder(String symbol, Long orderId, String origClientOrderId) {

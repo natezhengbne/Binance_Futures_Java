@@ -14,7 +14,7 @@ public class SubscribeAggregateTrade {
 //            client.unsubscribeAll();
 //        }), null);
 
-        client.subscribeTradeEvent("btcusdt", ((event) -> {
+        client.subscribeTradeEvent("btcusdt,ethusdt", ((event) -> {
             System.out.println(event);
         }), null);
 

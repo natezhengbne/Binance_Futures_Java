@@ -58,7 +58,7 @@ class WebsocketRequestImpl {
         request.name = "***Trade for " + symbol + "***";
         request.connectionHandler = (connection) -> connection.send(Channels.tradeChannel(symbol));
         request.jsonParser = (jsonWrapper) -> {
-            System.out.println(JSON.parseObject(JSONObject.toJSONString(jsonWrapper)).toJSONString());
+//            System.out.println(JSON.parseObject(JSONObject.toJSONString(jsonWrapper)).toJSONString());
             TradeEvent result = new TradeEvent();
             result.setEventType(jsonWrapper.getString("e"));
             result.setEventTime(jsonWrapper.getLong("E"));

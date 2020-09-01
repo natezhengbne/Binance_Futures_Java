@@ -13,6 +13,7 @@ import com.binance.client.model.trade.*;
 import okhttp3.Request;
 import org.apache.commons.lang3.StringUtils;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -1331,4 +1332,20 @@ class RestApiRequestImpl {
         return request;
     }
 
+    public RestApiRequest<String> transfer(String asset, String amount, Integer type) {
+        RestApiRequest<String> request = new RestApiRequest<>();
+        UrlParamsBuilder builder = UrlParamsBuilder.build()
+                .putToUrl("asset", asset)
+                .putToUrl("amount", new BigDecimal(amount))
+                .putToUrl("type", type);
+
+        request.request = createRequestByGetWithSignature("/futures/transfer", builder);
+        request.jsonParser = (jsonWrapper -> {
+            String result = jsonWrapper.getString("tranId");
+            return result;
+        });
+
+        return request;
+
+    }
 }

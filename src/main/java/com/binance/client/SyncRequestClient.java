@@ -54,6 +54,7 @@ public interface SyncRequestClient {
         return BinanceApiInternalFactory.getInstance().createSyncRequestClient(apiKey, secretKey, options);
     }
 
+    String transfer(String asset, String amount, Integer type);
 
     /**
      * Fetch current exchange trading rules and symbol information.
