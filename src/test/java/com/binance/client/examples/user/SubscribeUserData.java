@@ -17,11 +17,11 @@ public class SubscribeUserData {
         String listenKey = syncRequestClient.startUserDataStream();
         System.out.println("listenKey: " + listenKey);
 
-        // Keep user data stream
+//         Keep user data stream
         syncRequestClient.keepUserDataStream(listenKey);
 
         // Close user data stream
-        syncRequestClient.closeUserDataStream(listenKey);
+//        syncRequestClient.closeUserDataStream(listenKey);
 
         SubscriptionClient client = SubscriptionClient.create(PrivateConfig.API_KEY, PrivateConfig.SECRET_KEY);
 

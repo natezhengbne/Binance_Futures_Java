@@ -467,14 +467,17 @@ class WebsocketRequestImpl {
     WebsocketRequest<UserDataUpdateEvent> subscribeUserDataEvent(String listenKey,
                                                                  SubscriptionListener<UserDataUpdateEvent> subscriptionListener,
                                                                  SubscriptionErrorHandler errorHandler) {
+        System.out.println("我已经进来了");
         com.binance.client.impl.InputChecker.checker()
                 .shouldNotNull(listenKey, "listenKey")
                 .shouldNotNull(subscriptionListener, "listener");
+        System.out.println("我的listenkey已经检查了");
         WebsocketRequest<UserDataUpdateEvent> request = new WebsocketRequest<>(subscriptionListener, errorHandler);
         request.name = "***User Data***"; 
         request.connectionHandler = (connection) -> connection.send(Channels.userDataChannel(listenKey));
 
         request.jsonParser = (jsonWrapper) -> {
+            System.out.println("我看下是否连接成功并解析");
             UserDataUpdateEvent result = new UserDataUpdateEvent();
             result.setEventType(jsonWrapper.getString("e"));
             result.setEventTime(jsonWrapper.getLong("E"));

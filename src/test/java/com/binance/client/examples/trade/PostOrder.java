@@ -16,7 +16,7 @@ public class PostOrder {
 
         // place dual position side order.
         // Switch between dual or both position side, call: com.binance.client.examples.trade.ChangePositionSide
-        System.out.println(syncRequestClient.postOrder("BTCUSDT", OrderSide.SELL, PositionSide.SHORT, OrderType.LIMIT, TimeInForce.GTC,
-                "1", "9000", null, null, null, null, NewOrderRespType.RESULT));
+        System.out.println(syncRequestClient.postOrderTest("BTCUSDT", OrderSide.SELL, PositionSide.BOTH, OrderType.LIMIT, TimeInForce.GTC,
+                "1", "12880", null, null, null, null, NewOrderRespType.RESULT));
     }
 }
