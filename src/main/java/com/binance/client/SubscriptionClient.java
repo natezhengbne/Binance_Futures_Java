@@ -3,6 +3,7 @@ package com.binance.client;
 import com.binance.client.impl.BinanceApiInternalFactory;
 import com.binance.client.model.enums.CandlestickInterval;
 import com.binance.client.model.event.*;
+import com.binance.client.model.market.SymbolMarketTickersEvent;
 import com.binance.client.model.user.UserDataUpdateEvent;
 
 import java.util.List;
@@ -232,6 +233,9 @@ public interface SubscriptionClient {
      */
     void subscribeUserDataEvent(String listenKey,
                                 SubscriptionListener<UserDataUpdateEvent> callback, SubscriptionErrorHandler errorHandler);
+
+    void onSymbolMarketTickersEvent(String symbol, SubscriptionListener<SymbolMarketTickersEvent> subscriptionListener,
+                                    SubscriptionErrorHandler errorHandler);
 
 
 }

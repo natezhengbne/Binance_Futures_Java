@@ -10,8 +10,11 @@ import com.binance.client.impl.utils.JsonWrapperArray;
 import com.binance.client.model.enums.CandlestickInterval;
 import com.binance.client.model.event.*;
 import com.binance.client.model.market.OrderBookEntry;
+import com.binance.client.model.market.SymbolMarketTickersEvent;
 import com.binance.client.model.user.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.Closeable;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -541,6 +544,25 @@ class WebsocketRequestImpl {
                 result.setOrderUpdate(orderUpdate); 
             }
             
+            return result;
+        };
+        return request;
+    }
+
+    public WebsocketRequest<SymbolMarketTickersEvent> onSymbolMarketTickersEvent(String symbol, SubscriptionListener<SymbolMarketTickersEvent> subscriptionListener,
+                                                SubscriptionErrorHandler errorHandler) {
+
+        com.binance.client.impl.InputChecker.checker()
+                .shouldNotNull(symbol, "symbol")
+                .shouldNotNull(subscriptionListener, "listener");
+        WebsocketRequest<SymbolMarketTickersEvent> request = new WebsocketRequest<>(subscriptionListener, errorHandler);
+        request.name = "***Individual Symbol Book Ticker for " + symbol + "***";
+        request.connectionHandler = (connection) -> connection.send(Channels.onSymbolMarketTickersEvent(symbol));
+
+        request.jsonParser = (jsonWrapper) -> {
+            ObjectMapper mapper = new ObjectMapper();
+            SymbolMarketTickersEvent result = mapper.readValue(jsonWrapper.getJson().toJSONString(), SymbolMarketTickersEvent.class);
+//            SymbolMarketTickersEvent result = JSONObject.parseObject(jsonWrapper.getJson().toString(), SymbolMarketTickersEvent.class);
             return result;
         };
         return request;

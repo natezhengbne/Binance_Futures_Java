@@ -46,7 +46,9 @@ public class WebSocketConnection extends WebSocketListener {
         this.connectionId = connectionCounter++;
         this.request = request;
         this.autoClose = autoClose;
-
+        if (options != null) {
+            subscriptionUrl = options.getUri();
+        }
         this.okhttpRequest = request.authHandler == null ? new Request.Builder().url(subscriptionUrl).build()
                 : new Request.Builder().url(subscriptionUrl).build();
         this.watchDog = watchDog;

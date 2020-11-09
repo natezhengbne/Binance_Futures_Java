@@ -98,6 +98,16 @@ public abstract class Channels {
         json.put("method", "SUBSCRIBE");
         return json.toJSONString();
     }
+
+    public static String onSymbolMarketTickersEvent(String symbol) {
+        JSONObject json = new JSONObject();
+        JSONArray params = new JSONArray();
+        params.add(symbol + "@ticker");
+        json.put("params", params);
+        json.put("id", System.currentTimeMillis());
+        json.put("method", "SUBSCRIBE");
+        return json.toJSONString();
+    }
   
     public static String bookTickerChannel() {
         JSONObject json = new JSONObject();
