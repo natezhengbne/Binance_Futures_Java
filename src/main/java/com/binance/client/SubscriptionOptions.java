@@ -9,7 +9,7 @@ import java.net.URI;
  */
 public class SubscriptionOptions {
 
-    private String uri = "wss://stream.binancezh.com:9443/ws";
+    private String uri = "wss://fstream.binance.com/ws/";
 //    private String uri = "wss://stream.binance.com:9443/ws/";
     private boolean isAutoReconnect = true;
     private int receiveLimitMs = 60_000;

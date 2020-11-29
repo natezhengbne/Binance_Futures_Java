@@ -498,7 +498,6 @@ class WebsocketRequestImpl {
                     balanceList.add(balance);
                 });
                 accountUpdate.setBalances(balanceList);
-
                 List<PositionUpdate> positionList = new LinkedList<>();
                 JsonWrapperArray datalist = jsonWrapper.getJsonObject("a").getJsonArray("B");
                 datalist.forEach(item -> {

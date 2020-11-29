@@ -2,7 +2,7 @@ package com.binance.client.examples.constants;
 
 public class PrivateConfig {
 
-    public static final String API_KEY = "uPK6Mkd74ux6mw8TlcrEQY14vNI0YE92vZMvpgvPhlAIx0qO9rmAlqmhC6o4VzMT";
-    public static final String SECRET_KEY = "CvZ4b26yjIdR9KYBv0fMti0mfClywzgqOKe1bh2efchNc6V72mvlz6n7ffHYoUTH";
+    public static final String API_KEY = "LfkhHedXqwg1TmXL9S7RjIaAONLJQY63xGheSVVPwSCZgYkdtl4qLIEmoBIPizrX";
+    public static final String SECRET_KEY = "5vjNQ3tGqUTy3sGHH1FtQZ1O7Jvcu6OJU7xbgVqVOAEcXH7NkaYaFQQsZkbFGE9u";
 
 }
